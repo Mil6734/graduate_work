@@ -1,0 +1,19 @@
+{% extends 'products/base.html' %}
+{% load static %}
+
+{%block content%}
+
+<div class="container">
+     {% for product in products %}
+    <div class="main">
+        <a href="#"><img src="{{ product.image.url }}" alt=""></a>
+        <a href="" class="name">
+            <h4>{{product.name}}</h4>
+        </a>
+        <p class="price">{{product.price}}p</p>
+        <button class="btn btn-outline-secondary add-btn">Add to Cart</button>
+    </div>
+    {%endfor%}
+
+</div>
+{%endblock%}
