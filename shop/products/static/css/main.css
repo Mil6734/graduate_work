@@ -5,8 +5,13 @@ body{
 }
 
 .wrapper {
-    max-width: 1950px;
     margin: 0 auto;
+
+
+}
+.header {
+    text-align: center;
+    padding: 32px;
 }
 
 h1,h2,h3,h4,h5,h6{

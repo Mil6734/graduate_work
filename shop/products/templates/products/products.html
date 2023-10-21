@@ -1,17 +1,17 @@
 {% extends 'products/base.html' %}
 {% load static %}
-
+{%block title%} {{title}} {%endblock title%}
 {%block content%}
 
 <div class="container">
      {% for product in products %}
     <div class="main">
-        <a href="#"><img src="{{ product.image.url }}" alt=""></a>
-        <a href="" class="name">
+        <a href="{% url 'product' product.id %}"><img src="{{ product.image.url }}" alt=""></a>
+        <a href="{% url 'product' product.id %}" class="name">
             <h4>{{product.name}}</h4>
         </a>
         <p class="price">{{product.price}}p</p>
-        <button class="btn btn-outline-secondary add-btn">Add to Cart</button>
+        <a href="{% url 'add_to_cart' product.id %}"><button class="btn btn-outline-secondary add-btn">Add to Cart</button></a>
     </div>
     {%endfor%}
 

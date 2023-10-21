@@ -1,0 +1,58 @@
+{% extends 'products/base.html' %}
+{% load static %}
+
+{% block style %} <link rel="stylesheet" href="{% static 'css/checkout.css' %}"> {% endblock %}
+{%block content%}
+
+<div class="row">
+  <div class="col-75">
+    <div class="container">
+      <form action="{% url 'checkout' %}" method="post">
+        {% csrf_token %}
+
+        <div class="row">
+          <div class="col-50">
+            <h3>Billing Address</h3>
+            <label for="{{ form.first_name.id_for_label }}"><i class="fa fa-user"></i> First Name</label>
+            {{ form.first_name }}
+
+            <label for="{{ form.last_name.id_for_label }}"><i class="fa fa-user"></i> Last Name</label>
+            {{ form.last_name }}
+
+            <label for="{{ form.email.id_for_label }}"><i class="fa fa-envelope"></i> Email</label>
+            {{ form.email }}
+
+            <label for="{{ form.address.id_for_label }}"><i class="fa fa-address-card-o"></i> Address</label>
+            {{ form.address }}
+
+            <label for="{{ form.phone.id_for_label }}"><i class="fa fa-institution"></i> Phone</label>
+            {{ form.phone}}
+
+            <label for="{{ form.zipcode.id_for_label }}"><i class="fa fa-institution"></i> zipcode</label>
+            {{ form.zipcode }}
+
+          </div>
+        </div>
+        <input type="submit" value="Continue to checkout" class="btn-check">
+      </form>
+    </div>
+  </div>
+
+  <div class="col-25">
+    <div class="container1">
+      <h4>Корзина
+        <span class="price" style="color:black">
+          <i class="fa fa-shopping-cart"></i>
+          <b>{{ cart.get_cart_item }}</b>
+        </span>
+      </h4>
+      {% for item in cart_items %}
+      <p><a href="{% url 'product' item.product.id %}">{{ item.product.name }}({{item.quantity}})</a> <span class="price">{{item.product.price}} .руб</span></p>
+      {% endfor %}
+      <hr>
+      <p>Total <span class="price" style="color:black"><b>{{ cart.get_cart_total }} .руб</b></span></p>
+    </div>
+  </div>
+</div>
+
+{%endblock%}

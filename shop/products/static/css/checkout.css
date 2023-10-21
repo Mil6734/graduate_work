@@ -1,0 +1,120 @@
+body{
+    margin: 0;
+    padding: 0;
+	margin-bottom: 20px;
+}
+
+.wrapper {
+    max-width: 1950px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+
+}
+
+.row {
+  display: flex;
+  margin: 0 -16px;
+
+}
+
+.col-25,
+.col-50,
+.col-75 {
+  padding: 30px;
+}
+
+.container {
+  background-color: #f2f2f2;
+  padding: 5px 20px 15px 20px;
+  border: 1px solid lightgrey;
+  border-radius: 3px;
+  flex-flow: column wrap;
+  width: 100%;
+}
+
+input[type=text] {
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+label {
+  margin-bottom: 10px;
+  display: block;
+}
+
+.btn-check {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px;
+  margin: 10px 0;
+  border: none;
+  width: 100%;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 17px;
+}
+
+.btn-check:hover {
+  background-color: #45a049;
+}
+
+span.price {
+  float: right;
+  color: grey;
+}
+
+.container1 {
+  width: 300px;
+  background-color: #f2f2f2;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.container1 h4 {
+  margin: 0;
+  padding-bottom: 15px;
+  font-size: 1.5em;
+  color: #333;
+}
+
+.container1 .price {
+  float: right;
+}
+
+.container1 p {
+  margin: 0;
+  padding: 10px 0;
+  border-bottom: 1px dotted #ddd;
+  clear: both;
+
+    white-space: nowrap; /* Текст не переносится */
+  overflow: hidden; /* Обрезаем всё за пределами блока */
+  text-overflow: ellipsis;
+}
+
+.container1 p:last-child {
+  border-bottom: none;
+  font-weight: bold;
+  font-size: 1.2em;
+
+}
+
+.container1 a {
+  color: #333;
+  text-decoration: none;
+}
+
+.container1 a:hover {
+  color: #007BFF;
+
+}
+
+.container1 hr {
+  margin: 10px 0;
+}
