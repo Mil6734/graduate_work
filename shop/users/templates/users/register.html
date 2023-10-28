@@ -1,46 +1,40 @@
-<!DOCTYPE html>
+{% extends 'users/login.html' %}
 {% load static %}
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>
-        {%block title%}{{title}}{%endblock%}
-    </title>
+{% block content %}
+<div class="global-container">
+    <div class="card login-form">
+        <div class="card-body">
+            <h3 class="card-title text-center"> Регистрация </h3>
+            <div class="card-text">
+                <form action="{% url 'register' %}" class="form" method="post">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="{{ form.email.id_for_label }}"> Электронная почта </label>
+                        {{ form.email }}
+                    </div>
 
-    <link rel="stylesheet" href="{% static 'css/register.css' %}">
-</head>
+                    <div class="form-group">
+                        <label for="{{ form.username.id_for_label }}"> Логин </label>
+                        {{ form.username }}
+                    </div>
 
-<body>
-<form action="{% url 'register' %}" class="form" method="post">
-    {% csrf_token %}
-    <div class="container">
-        <a href="{% url 'products' %}"><p class="exit">x</p></a>
-        <h1>Регистрация</h1>
-        <p>Пожалуйста, заполните эту форму, чтобы создать учетную запись.</p>
-        <hr>
+                    <div class="form-group">
+                        <label for="{{ form.password1.id_for_label }}">Введите пароль </label>
+                        {{ form.password1 }}
+                    </div>
 
-        <label for="{{ form.email.id_for_label }}"><b>Электронная почта</b></label>
-        {{ form.email }}
+                    <div class="form-group">
+                        <label for="{{ form.password2.id_for_label }}">Повторите пароль </label>
+                        {{ form.password2 }}
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block"> Зарегистрироваться</button>
 
-        <label for="{{ form.username.id_for_label }}"><b>Логин</b></label>
-        {{ form.username }}
-
-        <label for="{{ form.password1.id_for_label }}"><b>Пароль</b></label>
-        {{ form.password1 }}
-
-        <label for="{{ form.password2.id_for_label }}"><b>Повторите пароль</b></label>
-        {{ form.password2 }}
-        <hr>
-        <button type="submit" class="registerbtn">Регистрация</button>
-        <div class="container signin">
-            <p>Уже есть аккаунт? <a href="{% url 'login' %}">Войти</a>.</p>
+                    <div class="sign-up">
+                        Уже есть аккаунт? <a href="{% url 'login' %}"> Вход </a>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
-
-
-</form>
-</body>
-
-</html>
+    {% endblock %}

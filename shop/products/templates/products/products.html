@@ -1,17 +1,21 @@
 {% extends 'products/base.html' %}
 {% load static %}
+{% load humanize %}
+
 {%block title%} {{title}} {%endblock title%}
 {%block content%}
 
 <div class="container">
-     {% for product in products %}
+    {% for product in products %}
     <div class="main">
         <a href="{% url 'product' product.id %}"><img src="{{ product.image.url }}" alt=""></a>
         <a href="{% url 'product' product.id %}" class="name">
             <h4>{{product.name}}</h4>
         </a>
-        <p class="price">{{product.price}}p</p>
-        <a href="{% url 'add_to_cart' product.id %}"><button class="btn btn-outline-secondary add-btn">Add to Cart</button></a>
+        <p class="price">{{product.price|intcomma}} .pуб</p>
+        <a href="{% url 'add_to_cart' product.id %}" class="cart-btn1">
+            <button class="btn btn-outline-secondary add-btn">В корзину</button>
+        </a>
     </div>
     {%endfor%}
 

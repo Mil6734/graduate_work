@@ -4,8 +4,8 @@ from products.models import Product
 
 
 class Cart(models.Model):
-    username = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Покупатель')
-    date_cart = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания',)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Покупатель')
+    date_cart = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания', )
 
     class Meta:
         verbose_name = 'Корзина'
@@ -28,7 +28,7 @@ class Cart(models.Model):
 
 
 class CartItem(models.Model):
-    cart = models.ForeignKey(Cart, on_delete=models.CASCADE, verbose_name='Корзина',)
+    cart = models.ForeignKey(Cart, on_delete=models.CASCADE, verbose_name='Корзина', )
     product = models.ForeignKey(Product, on_delete=models.CASCADE, verbose_name='Товар')
     quantity = models.IntegerField(default=0, blank=True, null=True)
     date_add = models.DateTimeField(auto_now_add=True)
@@ -52,5 +52,3 @@ class CartItem(models.Model):
             'sum': float(self.get_total())
         }
         return cart_item
-
-

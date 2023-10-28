@@ -1,0 +1,42 @@
+{% extends 'products/base.html' %}
+{% load static %}
+{% load humanize %}
+{% block content %}
+<h1 class="title-th">Ваши заказы</h1>
+{% if orders %}
+{% for order in orders %}
+<div class="order-wrapper">
+    <div class="order-header">
+        <p>Адрес: {{ order.shipping_address }} - {{order.shipping_address.date_add}}</p>
+        <p><strong>Статус заказа: {{ order.get_status_display }}</strong></p>
+    </div>
+    <div class="table-wrapper">
+        <table class="alt">
+            <thead>
+            <tr>
+                <th>Название</th>
+                <th>Количество</th>
+                <th>Цена</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for order_item in order.items.all %}
+            <tr>
+                <td>{{ order_item.product.name }}</td>
+                <td>{{ order_item.quantity }}</td>
+                <td>{{ order_item.get_total|intcomma }}</td>
+            </tr>
+            {% endfor %}
+
+            </tbody>
+            <h6 class="price-order"> Общая сумма: {{ order.total_price|intcomma }} .руб</h6>
+        </table>
+    </div>
+</div>
+{% if not forloop.last %}
+<hr>{% endif %}
+{% endfor %}
+{% else %}
+<p>У вас пока нет заказов.</p>
+{% endif %}
+{% endblock %}

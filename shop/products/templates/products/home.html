@@ -1,11 +1,18 @@
 {% extends 'products/base.html' %}
 {% load static %}
-{% block style %} <link rel="stylesheet" href="{% static 'css/home.css' %}"> {% endblock %}
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}"> {% endblock %}
 {%block title%} {{title}} {%endblock title%}
 
 {%block content%}
-
-<h1>главная</h1>
-
-
-{%endblock%}
+<div class="container">
+    <header class="showcase">
+        <h2>Добро пожаловать</h2>
+        <p>
+            TimeShop - магазин часов
+        </p>
+        <a href="{% url 'products' %}" class="btn-home">
+            Начать покупки <i class="fas fa-chevron-right"></i>
+        </a>
+    </header>
+    {%endblock%}

@@ -1,33 +1,29 @@
 {% extends 'products/base.html' %}
 {% load static %}
-{% block style %} <link rel="stylesheet" href="{% static 'css/product.css' %}"> {% endblock %}
+{% load humanize %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/product.css' %}"> {% endblock %}
 {%block title%} {{title}} {%endblock title%}
 
 {%block content%}
-
-    <div class="col-lg-9">
-        <div class="row">
-            <div class="col-lg-5">
-                <img src="{{product.image.url}}" alt="" class="big">
-                <br>
-                <div class="center">
-                    {% for img in product.photo_set.all %}
-                    <img src="{{ img.add_photo.url }}" alt="" class="small">
-                    {% endfor %}
-
-                </div>
-            </div>
-            <div class="col-lg-7">
-                <h1 class="title">{{product.name}}</h1>
-                <h4>Описание товара: </h4>
-                <p>{{product.description}}</p>
-                <h2 class="price">{{ product.price }} руб. </h2>
-                <br> <br>
-                <a href="{% url 'add_to_cart' product.id %}" class="btn btn-outline-success">В КОРЗИНУ</a>
-            </div>
-        </div>
-
+<main class="container">
+    <div class="left-column">
+        <img class="active" src="{{product.image.url}}" alt="">
     </div>
 
+    <div class="right-column">
+        <div class="product-description">
+            <h1>{{product.name}}</h1>
+            <p>{{product.description}}</p>
+        </div>
+
+        <div class="product-configuration">
+            <a href="{% url 'add_to_cart' product.id %}" class="cart-btn">В корзину</a>
+            <div class="product-price">
+                <span>{{ product.price|intcomma }} руб.</span>
+            </div>
+        </div>
+</main>
 
 {%endblock%}

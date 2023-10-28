@@ -1,10 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Title</title>
-</head>
-<body>
+{% extends 'products/base.html' %}
+{% load static %}
+{%block title%} {{title}} {%endblock title%}
 
-</body>
-</html>
+{% block content %}
+<h1 class="prof-h">Ваш профиль</h1>
+<div class="container-prof">
+
+<p>Здравствуйте, {{ request.user.get_username }}. Количество заказов: <strong>{{ request.user.orders.count}}</strong></p>
+<p>Ваши заказы: <a href="{% url 'user_orders' %}">Перейти к заказам</a></p>
+<p>Если вы хотите сменить пароль: <a href="{% url 'reset_password' %}">Сменить пароль</a></p>
+</div>
+
+{% endblock %}

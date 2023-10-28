@@ -1,0 +1,21 @@
+{% extends 'products/base.html' %}
+{% load static %}
+{% load humanize %}
+
+{% block content %}
+<div class="container-th">
+    <h2>Спасибо за ваш заказ!</h2>
+    <p><strong>Содержимое заказа:</strong>
+        {% for item in order.items.all %}
+    <p>{{ item.quantity }} х {{ item.product.name }}</p>
+    {% endfor %}
+    <br>
+    <p>На сумму <b></b> {{ order.total_price|intcomma }} рублей.</p>
+
+    <p><strong>Привезем по адресу:</strong></p>
+    <p>{{ order.shipping_address }}</p>
+    <div>
+        <a href="{% url 'user_orders' %}" class="button">Мои заказы</a>
+    </div>
+</div>
+{% endblock %}

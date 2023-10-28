@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'users.apps.UsersConfig',
     'orders.apps.OrdersConfig',
     'carts.apps.CartsConfig',
+    'django.contrib.humanize',
 ]
 
 MIDDLEWARE = [
@@ -146,3 +147,12 @@ AUTH_USER_MODEL = 'users.User'
 
 SESSION_COOKIE_SECURE = False
 SESSION_SAVE_EVERY_REQUEST = True
+
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'aand99743@gmail.com'
+EMAIL_HOST_PASSWORD = 'iwhdrdylgkfognke'
+
+DOMAIN_NAME = 'http://127.0.0.1:8000'

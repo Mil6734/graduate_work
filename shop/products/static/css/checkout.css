@@ -26,7 +26,7 @@ body{
 
 .container {
   background-color: #f2f2f2;
-  padding: 5px 20px 15px 20px;
+  padding: 5px 20px 25px 20px;
   border: 1px solid lightgrey;
   border-radius: 3px;
   flex-flow: column wrap;
@@ -68,17 +68,17 @@ span.price {
 }
 
 .container1 {
-  width: 300px;
+  width: 400px;
   background-color: #f2f2f2;
   border: 1px solid #ccc;
   border-radius: 5px;
   padding: 20px;
-  font-family: Arial, sans-serif;
+  font-family: sans-serif;
 }
 
 .container1 h4 {
   margin: 0;
-  padding-bottom: 15px;
+  padding-bottom: 10px;
   font-size: 1.5em;
   color: #333;
 }
@@ -93,8 +93,8 @@ span.price {
   border-bottom: 1px dotted #ddd;
   clear: both;
 
-    white-space: nowrap; /* Текст не переносится */
-  overflow: hidden; /* Обрезаем всё за пределами блока */
+  white-space: nowrap;
+  overflow: hidden;
   text-overflow: ellipsis;
 }
 
@@ -117,4 +117,12 @@ span.price {
 
 .container1 hr {
   margin: 10px 0;
+}
+
+select {
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
 }
